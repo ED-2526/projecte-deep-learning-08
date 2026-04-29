@@ -6,7 +6,7 @@ import numpy as np
 import wandb
 from torch.nn import CTCLoss
 
-# Constantes globales (definirlas UNA SOLA VEZ)
+# Constantes globales
 IMG_WIDTH = 128
 IMG_HEIGHT = 32
 CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?;:()'\"- "
@@ -44,6 +44,8 @@ class IAMDataset(Dataset):
             img = Image.new('L', (IMG_WIDTH, IMG_HEIGHT), 0)
         img = img.resize((IMG_WIDTH, IMG_HEIGHT), Image.Resampling.BILINEAR)
         img = np.array(img, dtype=np.float32) / 255.0
+        # Normalización: pasar a rango [-1, 1] (media ~0.5, std ~0.5)
+        img = (img - 0.5) / 0.5
         img = torch.from_numpy(img).unsqueeze(0)  # (1, H, W)
         label_indices = text_to_indices(label)
         label_len = len(label_indices)
