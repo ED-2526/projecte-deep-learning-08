@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+import torchvision
 import torch
 from torch.utils.data import DataLoader
 
@@ -34,6 +36,30 @@ def main():
         # Deberías ver algo como [32, Longitud_Máxima_de_texto_del_lote]
         print(f" - Forma del tensor de etiquetas: {labels.shape}")
         # Rompemos el bucle porque solo queremos probar que el primero funciona
+        # --- VISUALIZAR LA MAGIA ---
+        print("\nDibujando las imágenes...")
+        
+        # Cogemos solo las primeras 8 imágenes del lote (para que se vea bien)
+        # torchvision.utils.make_grid las une en una sola imagen como un collage
+        grid = torchvision.utils.make_grid(images[:8], nrow=4)
+        
+        # PyTorch usa el orden (Canales, Alto, Ancho)
+        # Matplotlib necesita el orden (Alto, Ancho, Canales), así que le damos la vuelta:
+        grid_np = grid.permute(1, 2, 0).numpy()
+        
+        # Creamos el lienzo y dibujamos
+        plt.figure(figsize=(16, 6))
+        plt.imshow(grid_np)
+        plt.title("Lote de 8 imágenes preparadas para la IA (Fíjate en el padding negro)")
+        plt.axis('off') # Quitamos los ejes con números
+        
+        # Guardamos la foto en tu carpeta
+        plt.savefig("visualitzacio_padding.png", bbox_inches='tight', facecolor='black')
+        print("¡Listo! Se ha creado el archivo 'visualitzacio_padding.png'.")
+        
+        # Rompemos el bucle para que solo procese el primer lote
+        break
+
         break 
 
 if __name__ == "__main__":
