@@ -1,62 +1,35 @@
+import argparse
+import train
+import test
 import os
-import random
-import wandb
 
-import numpy as np
-import torch
-import torch.nn as nn
-import torchvision
-import torchvision.transforms as transforms
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--mode', type=str, choices=['train', 'test'], default='train')
+    args = parser.parse_args()
+    
+    # Configuración con rutas absolutas
+    class Config:
+        batch_size = 16
+        learning_rate = 0.001
+        epochs = 25
+        hidden_size = 256
+        train_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/train_gt.txt"
+        val_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/val_gt.txt"
+        test_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/linux_gt.txt"
+        img_dir = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset"
+    
+    # Verificar que los archivos existen (opcional pero recomendado)
+    config = Config()
+    for path in [config.train_gt, config.val_gt, config.test_gt, config.img_dir]:
+        if not os.path.exists(path):
+            print(f"Error: No se encuentra {path}")
+            return
+    
+    if args.mode == 'train':
+        train.train(config)
+    else:
+        test.test(config)
 
-from train import *
-from test import *
-from utils.utils import *
-from tqdm.auto import tqdm
-
-# Ensure deterministic behavior
-torch.backends.cudnn.deterministic = True
-random.seed(hash("setting random seeds") % 2**32 - 1)
-np.random.seed(hash("improves reproducibility") % 2**32 - 1)
-torch.manual_seed(hash("by removing stochasticity") % 2**32 - 1)
-torch.cuda.manual_seed_all(hash("so runs are repeatable") % 2**32 - 1)
-
-# Device configuration
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-# remove slow mirror from list of MNIST mirrors
-torchvision.datasets.MNIST.mirrors = [mirror for mirror in torchvision.datasets.MNIST.mirrors
-                                      if not mirror.startswith("http://yann.lecun.com")]
-
-
-
-
-def model_pipeline(cfg:dict) -> None:
-    # tell wandb to get started
-    with wandb.init(project="pytorch-demo", config=cfg):
-      # access all HPs through wandb.config, so logging matches execution!
-      config = wandb.config
-
-      # make the model, data, and optimization problem
-      model, train_loader, test_loader, criterion, optimizer = make(config,device=device)
-
-      # and use them to train the model
-      train(model, train_loader, criterion, optimizer, config,device=device)
-
-      # and test its final performance
-      test(model, test_loader,device=device)
-
-    return model
-
-if __name__ == "__main__":
-    wandb.login()
-
-    config = dict(
-        epochs=5,
-        classes=10,
-        kernels=[16, 32],
-        batch_size=128,
-        learning_rate=5e-3,
-        dataset="MNIST",
-        architecture="CNN")
-    model = model_pipeline(config)
-
+if __name__ == '__main__':
+    main()
