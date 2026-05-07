@@ -84,6 +84,12 @@ def make_prediction_table(examples):
         )
     return table
 
+def save_wandb_artifact(run, artifact_name, artifact_type, file_path):
+    wandb.save(file_path)
+    artifact = wandb.Artifact(artifact_name, type=artifact_type)
+    artifact.add_file(file_path)
+    run.log_artifact(artifact)
+
 def validate(model, loader, criterion, device, epoch=None, max_batches=None, prediction_samples=8):
     model.eval()
     total_loss = 0
@@ -169,8 +175,10 @@ def train(config):
     max_val_batches = getattr(config, "max_val_batches", None)
     prediction_samples = getattr(config, "prediction_samples", 8)
     checkpoint_path = getattr(config, "checkpoint_path", "best_model.pth")
+    cer_checkpoint_path = getattr(config, "cer_checkpoint_path", "best_cer_model.pth")
 
     best_val_loss = float('inf')
+    best_val_cer = float('inf')
     patience_counter = 0
     patience = getattr(config, 'patience', 20)  # paciencia alta
 
@@ -206,6 +214,7 @@ def train(config):
                 "val_cer": val_cer,
                 "learning_rate": current_lr,
                 "best_val_loss": min(best_val_loss, val_loss),
+                "best_val_cer": min(best_val_cer, val_cer),
             }
             if wandb_mode != "disabled" and prediction_examples:
                 log_data["validation_predictions"] = make_prediction_table(prediction_examples)
@@ -217,21 +226,32 @@ def train(config):
                 best_val_loss = val_loss
                 patience_counter = 0
                 torch.save(model.state_dict(), checkpoint_path)
-                print(f"  -> Mejor modelo guardado (val_loss={val_loss:.4f})")
+                print(f"  -> Mejor modelo por val_loss guardado (val_loss={val_loss:.4f})")
 
                 if wandb_mode != "disabled":
-                    wandb.save(checkpoint_path)
-                    artifact = wandb.Artifact("best_model", type="model")
-                    artifact.add_file(checkpoint_path)
-                    run.log_artifact(artifact)
+                    save_wandb_artifact(run, "best_val_loss_model", "model", checkpoint_path)
             else:
                 patience_counter += 1
                 print(f"  -> Sin mejora ({patience_counter}/{patience})")
-                if patience_counter >= patience:
-                    print(f"Early stopping activado después de {epoch+1} épocas")
-                    break
 
-    print("Entrenamiento completado. Mejor pérdida de validación: {:.4f}".format(best_val_loss))
+            if val_cer < best_val_cer:
+                best_val_cer = val_cer
+                torch.save(model.state_dict(), cer_checkpoint_path)
+                print(f"  -> Mejor modelo por val_cer guardado (val_cer={val_cer:.4f})")
+
+                if wandb_mode != "disabled":
+                    save_wandb_artifact(run, "best_val_cer_model", "model", cer_checkpoint_path)
+
+            if patience_counter >= patience:
+                print(f"Early stopping activado después de {epoch+1} épocas")
+                break
+
+    print(
+        "Entrenamiento completado. "
+        "Mejor pérdida de validación: {:.4f}. Mejor CER de validación: {:.4f}".format(
+            best_val_loss, best_val_cer
+        )
+    )
 
 # Configuración por defecto (ajusta rutas según tu sistema)
 if __name__ == "__main__":
@@ -250,6 +270,7 @@ if __name__ == "__main__":
         max_val_batches = None
         prediction_samples = 8
         checkpoint_path = "best_model.pth"
+        cer_checkpoint_path = "best_cer_model.pth"
         train_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/train_gt.txt"
         val_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/val_gt.txt"
         test_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/linux_gt.txt"

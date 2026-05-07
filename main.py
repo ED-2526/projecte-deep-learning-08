@@ -17,6 +17,7 @@ def main():
     parser.add_argument('--max-val-batches', type=int, default=None)
     parser.add_argument('--prediction-samples', type=int, default=None)
     parser.add_argument('--checkpoint-path', type=str, default=None)
+    parser.add_argument('--cer-checkpoint-path', type=str, default=None)
     args = parser.parse_args()
     
     # Configuración con rutas absolutas
@@ -35,6 +36,7 @@ def main():
         max_val_batches = None
         prediction_samples = 8
         checkpoint_path = "best_model.pth"
+        cer_checkpoint_path = "best_cer_model.pth"
         train_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/train_gt.txt"
         val_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/val_gt.txt"
         test_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/linux_gt.txt"
@@ -55,6 +57,7 @@ def main():
         "max_val_batches": args.max_val_batches,
         "prediction_samples": args.prediction_samples,
         "checkpoint_path": args.checkpoint_path,
+        "cer_checkpoint_path": args.cer_checkpoint_path,
     }
     for key, value in overrides.items():
         if value is not None:
