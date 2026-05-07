@@ -13,8 +13,8 @@ dependencies:
   - wandb
   - onnxruntime
   - ipykernel
+  - python-Levenshtein
 - numpy
 - tqdm
 - tensorboard
 - protobuf
-
