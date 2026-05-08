@@ -54,7 +54,6 @@ def test(config):
     
     total_edit_distance = 0
     total_target_chars = 0
-    total_word_cer = 0.0
     total_samples = 0
     examples = []
     requested_examples = getattr(config, "test_samples", 0)
@@ -83,7 +82,6 @@ def test(config):
                 cer = edit_distance / max(len(real_text), 1)
                 total_edit_distance += edit_distance
                 total_target_chars += len(real_text)
-                total_word_cer += cer
                 total_samples += 1
 
                 if len(examples) < requested_examples:
@@ -101,7 +99,6 @@ def test(config):
                 print(f"Procesados {total_samples} ejemplos - CER parcial: {partial_cer:.4f}")
 
     cer_global = total_edit_distance / max(total_target_chars, 1)
-    mean_word_cer = total_word_cer / max(total_samples, 1)
 
     if examples and not quiet_examples:
         print("\nEjemplos de prediccion en test:")
@@ -123,4 +120,3 @@ def test(config):
         print(f"\nPredicciones guardadas en: {output_path}")
 
     print(f"Character Error Rate en test: {cer_global:.4f}")
-    print(f"Media de CER por palabra en test: {mean_word_cer:.4f}")
