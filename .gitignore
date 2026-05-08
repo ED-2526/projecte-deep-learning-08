@@ -3,8 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.onnx
+*.pth
 wandb*
 MNIST/
+test_predictions*.csv
 # C extensions
 *.so
 

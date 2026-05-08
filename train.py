@@ -275,6 +275,6 @@ if __name__ == "__main__":
         val_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/val_gt.txt"
         test_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/linux_gt.txt"
         img_dir = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset"
-        zip_path = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset.zip"
+        zip_path = None
     config = Config()
     train(config)

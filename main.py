@@ -18,6 +18,15 @@ def main():
     parser.add_argument('--prediction-samples', type=int, default=None)
     parser.add_argument('--checkpoint-path', type=str, default=None)
     parser.add_argument('--cer-checkpoint-path', type=str, default=None)
+    parser.add_argument('--train-gt', type=str, default=None)
+    parser.add_argument('--val-gt', type=str, default=None)
+    parser.add_argument('--test-gt', type=str, default=None)
+    parser.add_argument('--img-dir', type=str, default=None)
+    parser.add_argument('--zip-path', type=str, default=None)
+    parser.add_argument('--test-samples', type=int, default=None)
+    parser.add_argument('--test-output', type=str, default=None)
+    parser.add_argument('--test-progress-every', type=int, default=None)
+    parser.add_argument('--quiet-test-samples', action='store_true')
     args = parser.parse_args()
     
     # Configuración con rutas absolutas
@@ -37,11 +46,15 @@ def main():
         prediction_samples = 8
         checkpoint_path = "best_model.pth"
         cer_checkpoint_path = "best_cer_model.pth"
+        test_samples = 0
+        test_output = None
+        test_progress_every = 0
+        quiet_test_samples = False
         train_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/train_gt.txt"
         val_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/val_gt.txt"
         test_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/linux_gt.txt"
         img_dir = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset"
-        zip_path = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset.zip"
+        zip_path = None
     
     # Verificar que los archivos existen (opcional pero recomendado)
     config = Config()
@@ -58,12 +71,23 @@ def main():
         "prediction_samples": args.prediction_samples,
         "checkpoint_path": args.checkpoint_path,
         "cer_checkpoint_path": args.cer_checkpoint_path,
+        "train_gt": args.train_gt,
+        "val_gt": args.val_gt,
+        "test_gt": args.test_gt,
+        "img_dir": args.img_dir,
+        "zip_path": args.zip_path,
+        "test_samples": args.test_samples,
+        "test_output": args.test_output,
+        "test_progress_every": args.test_progress_every,
+        "quiet_test_samples": args.quiet_test_samples,
     }
     for key, value in overrides.items():
         if value is not None:
             setattr(config, key, value)
 
     for path in [config.train_gt, config.val_gt, config.test_gt, config.img_dir, config.zip_path]:
+        if path is None:
+            continue
         if not os.path.exists(path):
             print(f"Error: No se encuentra {path}")
             return

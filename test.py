@@ -1,3 +1,5 @@
+import csv
+
 import torch
 from utils.utils import IAMDataset, indices_to_text, NUM_CLASSES, IMG_HEIGHT, IMG_WIDTH, collate_fn
 from models import CRNN
@@ -50,14 +52,23 @@ def test(config):
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.eval()
     
-    total_cer = 0.0
+    total_edit_distance = 0
+    total_target_chars = 0
+    total_word_cer = 0.0
     total_samples = 0
+    examples = []
+    requested_examples = getattr(config, "test_samples", 0)
+    output_path = getattr(config, "test_output", None)
+    progress_every = getattr(config, "test_progress_every", 0)
+    quiet_examples = getattr(config, "quiet_test_samples", False)
+
     with torch.no_grad():
-        for images, labels, label_lengths in test_loader:
+        for batch_idx, (images, labels, label_lengths) in enumerate(test_loader, start=1):
             images = images.to(device)
             outputs = model(images)
             pred_indices = torch.argmax(outputs, dim=2)
             for i in range(images.size(0)):
+                sample_index = total_samples
                 pred_seq = []
                 prev = -1
                 for t in range(pred_indices.size(0)):
@@ -68,8 +79,48 @@ def test(config):
                 pred_text = indices_to_text(pred_seq)
                 real_seq = labels[i, :label_lengths[i].item()].tolist()
                 real_text = indices_to_text(real_seq)
-                cer = levenshtein_distance(pred_text, real_text) / max(len(real_text), 1)
-                total_cer += cer
+                edit_distance = levenshtein_distance(pred_text, real_text)
+                cer = edit_distance / max(len(real_text), 1)
+                total_edit_distance += edit_distance
+                total_target_chars += len(real_text)
+                total_word_cer += cer
                 total_samples += 1
-    avg_cer = total_cer / total_samples
-    print(f"Character Error Rate en test: {avg_cer:.4f}")
+
+                if len(examples) < requested_examples:
+                    _, image_ref, _ = test_dataset.samples[sample_index]
+                    examples.append({
+                        "index": sample_index,
+                        "image": image_ref,
+                        "target": real_text,
+                        "prediction": pred_text,
+                        "cer": cer,
+                    })
+
+            if progress_every and batch_idx % progress_every == 0:
+                partial_cer = total_edit_distance / max(total_target_chars, 1)
+                print(f"Procesados {total_samples} ejemplos - CER parcial: {partial_cer:.4f}")
+
+    cer_global = total_edit_distance / max(total_target_chars, 1)
+    mean_word_cer = total_word_cer / max(total_samples, 1)
+
+    if examples and not quiet_examples:
+        print("\nEjemplos de prediccion en test:")
+        for example in examples:
+            status = "OK" if example["cer"] == 0 else "ERR"
+            print(
+                f"[{status}] #{example['index']} "
+                f"target='{example['target']}' "
+                f"prediction='{example['prediction']}' "
+                f"cer={example['cer']:.4f}"
+            )
+            print(f"      imagen: {example['image']}")
+
+    if output_path:
+        with open(output_path, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=["index", "image", "target", "prediction", "cer"])
+            writer.writeheader()
+            writer.writerows(examples)
+        print(f"\nPredicciones guardadas en: {output_path}")
+
+    print(f"Character Error Rate en test: {cer_global:.4f}")
+    print(f"Media de CER por palabra en test: {mean_word_cer:.4f}")

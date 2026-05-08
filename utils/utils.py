@@ -29,13 +29,13 @@ def indices_to_text(indices):
 class IAMDataset(Dataset):
     def __init__(self, gt_file, img_dir, train=True, zip_path=None, max_width=IMG_WIDTH):
         self.img_dir = Path(img_dir)
-        self.zip_path = Path(zip_path) if zip_path else self.img_dir.parent / "iam_dataset.zip"
+        self.zip_path = Path(zip_path) if zip_path else None
         self.max_width = max_width
         self.samples = []
         self._zip_file = None
         zip_names = set()
 
-        if self.zip_path.exists():
+        if self.zip_path and self.zip_path.exists():
             with zipfile.ZipFile(self.zip_path) as zf:
                 zip_names = set(zf.namelist())
 
@@ -140,7 +140,7 @@ def make_loaders(train_gt, val_gt, test_gt, img_dir, batch_size, zip_path=None, 
 
     for name, dataset in [("train", train_dataset), ("val", val_dataset), ("test", test_dataset)]:
         if len(dataset) == 0:
-            raise ValueError(f"El dataset {name} esta vacio. Revisa rutas, txt e iam_dataset.zip.")
+            raise ValueError(f"El dataset {name} esta vacio. Revisa rutas, txt e imagenes.")
     
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, 
                               num_workers=2, collate_fn=collate_fn, pin_memory=True)
