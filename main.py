@@ -50,9 +50,9 @@ def main():
         test_output = None
         test_progress_every = 0
         quiet_test_samples = False
-        train_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/train_gt.txt"
-        val_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/val_gt.txt"
-        test_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset/linux_gt.txt"
+        train_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/marc_menendez/projecte-deep-learning-08/splits/train_gt_80.txt"
+        val_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/marc_menendez/projecte-deep-learning-08/splits/val_gt_10.txt"
+        test_gt = "/home/edxnG08/projecte-deep-learning-08/grup_8/marc_menendez/projecte-deep-learning-08/splits/test_gt_10.txt"
         img_dir = "/home/edxnG08/projecte-deep-learning-08/grup_8/iam_dataset"
         zip_path = None
     

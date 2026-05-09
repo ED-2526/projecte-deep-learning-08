@@ -83,7 +83,7 @@ def test(config):
                 total_edit_distance += edit_distance
                 total_target_chars += len(real_text)
                 total_samples += 1
-
+                #print(f"Target='{real_text}', Prediction='{pred_text}'")
                 if len(examples) < requested_examples:
                     _, image_ref, _ = test_dataset.samples[sample_index]
                     examples.append({
