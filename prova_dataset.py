@@ -27,7 +27,7 @@ class IAMWordsDataset(Dataset):
                 parts = line.split('\t')
                 if len(parts) == 2:
                     img_path = parts[0]
-                    text = parts[1]
+                    text = parts[1].lower()
                     
                     # --- NUEVO: Comprobamos si la imagen existe de verdad ---
                     # (Asumo que la carpeta principal la guardaste en self.img_dir)
