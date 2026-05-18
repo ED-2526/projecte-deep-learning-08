@@ -1,0 +1,384 @@
+images/train_000777.jpg	diumenge a 27 rebere de Pere Jua Ginestar serraller habitant en St
+images/train_000634.jpg	dit dia rebere de Hyacinto Barthomeu pintor habitant en Bara fill
+images/train_001993.jpg	Bara ab Hieronyma donsella filla de Juan Borrell pages de Agramut
+images/validation_000614.jpg	habitant en Sta Maria de Palau tordera ab Maryanna viuda de t
+images/validation_000383.jpg	Dimars a 4 rebere de Domingo Claros corder de Bara viudo ab
+images/train_002276.jpg	tisser de Bara
+images/test_000138.jpg	x e d i s <space> v i u d a <space> d e <space> B e r n a t <space> R e i g <space> j o v e <space> c i l u r g i a <space> d e <space> B a r a
+images/validation_000664.jpg	bitant tambe en Sabadell
+images/validation_000525.jpg	de Alburquerque viudo ab Anna donsella filla de Joa Gonçalez
+images/train_001732.jpg	pages de Castell defels y de Margarida
+images/train_001168.jpg	fill de Miquel Company # pages defunct y de Catherina ab Eularia
+images/train_001863.jpg	defunct y de Antonia
+images/test_000145.jpg	y <space> d e <space> M a r g a r i d a <space> d e f u n c t s
+images/test_000141.jpg	d e <space> V i c h <space> h a b i t a n t <space> e n <space> B a r a <space> v i u d o <space> a b <space> H i e r o n y m a <space> v i u d a <space> d e <space> R a m o <space> C o m e s
+images/train_001086.jpg	Sra Margarida donsella filla del Sr Pere Masdeu mercader de Bara
+images/train_001599.jpg	Dit dia rebere de jaume Casamada texidor de lli de Castellar habitant en
+images/train_000008.jpg	de Eularia
+images/train_001552.jpg	en Bara ab Margarida viuda de Juan Serralta traginer de mar
+images/train_000674.jpg	dissapte a 12 rebere de Onofre Tapies # de Terrassa
+images/train_000240.jpg	Cabot fuster y de Antonia defuncta ab Maria donsella filla de
+images/train_001642.jpg	Dimecres a 14 rebere de jordi Bruguera sabater del regne de frasa
+images/train_000875.jpg	dilluns a 18 rebere de jaume faliu pages de Campanya fill de franch
+images/train_001971.jpg	pages de St Menat defunct y de Elisabeth ab Eularia donsella filla de
+images/train_001989.jpg	ab Juana viuda de Juan Garau pages de Castell de fels
+images/train_001664.jpg	filla de jua Vilar pages de Munmany defunct y de Beneta
+images/train_000681.jpg	de Pere Massanes parayre de Solsona y de Eularia defuncts
+images/train_000968.jpg	tant en lo Prat ab Magdalena donsella filla de jaume Vinyes pages
+images/test_000016.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> J o a n <space> P a l l i s s e r <space> o r a t i o n e r <space> d e <space> T o r t o s a <space> v i u d o <space> a b <space> M a g =
+images/train_000382.jpg	Elisabeth donsella filla de Galcera Serra pages de Mataro de=
+images/train_000060.jpg	de la Roca fill de Steva Palau pages defunct y de Eufrahina
+images/test_000354.jpg	f i l l a <space> d e <space> j a u m e <space> S o r s <space> p a r a y r e <space> d e <space> V i c h <space> y <space> d e <space> M a g d a l e n a
+images/train_002214.jpg	Diumenge a 20 rebere de Pau Alegre pages de Bara viudo ab
+images/validation_000343.jpg	parayre de Terrassa y de t defuncta
+images/train_000207.jpg	ab Maria dosella filla de Antoni Pont pages de St Esteva de Palau
+images/train_000401.jpg	mori en Molanta
+images/train_002254.jpg	Anna donsella filla de francesch Scola mercader de Bara defuct
+images/test_000239.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> J o a n <space> B e n e t <space> A r n e l l a <space> p a g e s <space> d e <space> T e r r a s s a <space> f i l l <space> d e <space> G a b r i e l
+images/train_001815.jpg	orde y de t defuncta
+images/train_000308.jpg	belles fill de Arnau foix boter de Vilafranca y de Beneta defuncts
+images/train_001023.jpg	Bara fill de Guerau Argelagos sombrarer de Girona defunct y
+images/train_001894.jpg	viuda de Antoni Serra pages de St llorens de Morull bisbat de Solsona
+images/test_000458.jpg	T a r r a g o n a <space> f i l l <space> d e <space> B e r n a t <space> S e n d r o s <space> p a g e s <space> y <space> d e <space> J o a n a <space> a b <space> M a g d a l e n a <space> d o n
+images/train_000751.jpg	en St Iscla ab Clara donsella filla de Guillem Serra pages
+images/test_000740.jpg	S a r i o l <space> p a g e s <space> d e <space> O l i v e l l a <space> y <space> d e <space> E u l a r i a
+images/train_000574.jpg	lusia habitant en Bara ab Anna donsella filla de Jua Baro pages
+images/train_001837.jpg	habitant en Castellar ab Juana donsella filla de Pau Romeu pages
+images/test_000693.jpg	b i s b a t <space> d e <space> G i r o n a <space> h a b i t a n t <space> e n <space> B a r a <space> f i l l <space> d e <space> C o s m a <space> L l o r <space> p a r a y r e <space> y
+images/test_000443.jpg	d e <space> A n t o n i <space> S c a r r e r <space> p a g e s <space> y <space> d e <space> t <space> a b <space> C a t h e r i n a <space> v i u d a <space> d e <space> P e r e
+images/train_000784.jpg	de Pere Ribot pages y de Elienor ab Angela donsella filla de
+images/train_001018.jpg	Guitart pages y de Elienor defuncts ab francisca Camprecios viuda
+images/train_000447.jpg	mori en Bara
+images/test_000209.jpg	R o m a n y a
+images/train_001389.jpg	parayre y de Magdalena ab Hieronyma donsella filla de Pere
+images/validation_000654.jpg	tura habitant en Granollers fill de Antich Oriach pages defunct y de
+images/train_001649.jpg	lo Prat fill de Pere Pastor pages de dita vila y de Elisabeth defuncta
+images/train_000248.jpg	dit dia rebere de Magi Vern mestre de cases habitant en Collbato fill
+images/train_000403.jpg	Dijous a 29 rebere de Pere Mallol notari real fill de Jua Cipria
+images/validation_000318.jpg	Dissapte a 25 rebere de Pere Albanell sastre de Gualba fill de
+images/validation_000348.jpg	Dit dia rebere de Raphel Noguera velluter de Bara viudo ab
+images/validation_000430.jpg	en Tiana ab Eularia viuda de Guille Casanoves traginer de Taya
+images/train_000221.jpg	de Bara y de Marian#na defuncts
+images/test_000647.jpg	D i m e c r e s <space> a <space> 2 3 <space> r e b e r e <space> d e <space> P a u <space> M a r c h <space> s a m o l e r <space> d e <space> G r a n o l l e r s <space> v i u d o <space> a b <space> M a g =
+images/train_001912.jpg	Dijous a 29 rebere de Bernat Sabater carder de Bara viudo ab Maryana
+images/train_001683.jpg	pages de Cabrera defunct y de Paula ab Maria donsella filla de
+images/train_001734.jpg	Dit dia rebere de Ramon Roch pages del regne de frança habitant en
+images/train_001451.jpg	francha de Panaders habitant en Bara fill de Gabriel Antich
+images/train_001765.jpg	Dit dia rebere de Christophol Parra apothecari habitant en Bara fill
+images/validation_000371.jpg	Philippa donsella filla de Joan Rovira pescador de Bara y de
+images/train_000397.jpg	de Climent Cortell notari de Bara defunct y de Catherina
+images/train_000386.jpg	pages de Sarria y de Angela
+images/train_000779.jpg	Dilluns a 28 rebere de francesch Tries pages de Sta Eularia de
+images/train_001667.jpg	jaume jaume pages de dita parrochia y de Magdalena defuncts
+images/test_000237.jpg	f i l l <space> d e <space> A n t o n i <space> J o a n <space> B u g u n y a <space> p a g e s <space> d e f u n c t <space> y <space> d e <space> B e n e t a <space> a b <space> P a u =
+images/train_001937.jpg	de Urgell defunct y de Margarida
+images/test_000143.jpg	A n n a
+images/train_000995.jpg	tant en Mataro ab Paula donsella filla de Llatser Cabot texidor
+images/train_001936.jpg	ab Agnes donsella filla de Galcera # Avinyo hortola de
+images/validation_000032.jpg	Salvador Ninou pages de Sta Perpetua y de Candia
+images/validation_000010.jpg	fill de juan Besturs negociant de la vila de Conques bisbat de Urgell
+images/validation_000634.jpg	de Joan Barlet fuster de Sta Maria de Palau tordera defunct
+images/train_000541.jpg	dit dia rebere de jaume Sastre negociant habitant en Aulesa de Mont=
+images/test_000496.jpg	J o a n <space> L l a c h <space> t e x i d o r <space> d e <space> l l a n a <space> h a b i t a n t <space> e n <space> T e r r a s s a <space> y <space> d e <space> E l i s a b e t h <space> d e f u c t a
+images/train_000877.jpg	dit dia rebere de Raphel Crespiera negociant habitant en Bara fill de
+images/train_001988.jpg	Dissapte a 7 de dit rebere de jaume Oliveres pages de St Boy fill de
+images/validation_000412.jpg	therina defuncts ab Elisabeth donsella filla de Miql Quintana
+images/train_001140.jpg	bisbat de Urgell habitant en terrassa viudo ab Hieronyma viuda
+images/train_000974.jpg	ab Angela donsella filla de Jua Boria pages de Aulesa de Mot=
+images/train_002105.jpg	defuncts ab Maria donsella filla de Juan Giol sabater de Vilamajor
+images/test_000470.jpg	D i t <space> d i a <space> d o n a r e <space> l l i c e n t i a <space> g r a t i s <space> a <space> P e r e <space> L l o t i <space> c o u r e r <space> h a b i t a n t <space> e n <space> B a r a
+images/train_001353.jpg	de joan foguet droguer de Martorell defunct y de Eularia
+images/test_000451.jpg	t o r e l l <space> y <space> d e <space> t <space> d e f u n c t a
+images/train_000128.jpg	Dit dia rebere del Sr Sylvestre Arnella apothecari de Sabadell fill del Sr
+images/train_000276.jpg	dit dia rebere de Jua Pau Vilar pages de Junqueres viudo ab Eli=
+images/train_000937.jpg	en Bara ab Margarida viuda de Pere Cortes pages de Bara
+images/train_000241.jpg	dit dia rebere de Climent Llobet passamaner habitant en Bara viudo ab
+images/validation_000256.jpg	y de Bertran Sola baxador ab Eleonor Vinyals viuda
+images/validation_000571.jpg	Dit dia rebere de Gabriel Taraval calsater de Bara fill de An=
+images/train_000290.jpg	xidor de lli habitant en Bara y de Sicilia defuncta
+images/train_000029.jpg	bara domiciliat fill# de Jua Sella dosell defunct y de la Sra
+images/test_000724.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> J o a n <space> C a u l l e r <space> p a g e s <space> d e <space> S t <space> C u g a t <space> d e <space> P a n a d e r s <space> v i u d o
+images/validation_000082.jpg	nars viudo ab la Sra dona Anna viuda del Sr Miql de Tamarit
+images/train_000942.jpg	dit dia rebere de Juan Dexen pages de fransa habitant en Bara ab
+images/train_002268.jpg	Ricart jove sastre de Bara
+images/validation_000081.jpg	Armendia pages de Cardedeu y de Elisabeth defuncts ab Margarida
+images/train_000086.jpg	de Vich mori en residencia
+images/train_001384.jpg	Dilluns a 15 rebere de Juan Comes retorsedor de llana de Caldes de Monbuy
+images/train_000262.jpg	Testa sastre y de Elienor ab Anna donsella filla de me Jua Auger sastre
+images/train_000920.jpg	dit dia rebere de Jua Alavedra parayre de Abrera fill de Juan
+images/train_001015.jpg	Sta Coloma de Cervello y de t defuncta
+images/train_000495.jpg	filla de t Major pages de Sta Creu y de Hieronyma defucts
+images/train_001849.jpg	Divendres a 9 rebere de Antoni Vidal burges de Vilaredona fill de
+images/train_002119.jpg	Dilluns a 7 rebere de jaume Guitart pages de Terrassa # viudo
+images/train_001794.jpg	de Barthomeu Thomas pages y de Angela ab Angela donsella
+images/train_001529.jpg	Dit dia rebere de francesch Pere treballador de Bara fill de franch
+images/test_000728.jpg	d e <space> T a g a m a n e n t <space> b i s b a t <space> d e <space> V i c h
+images/validation_000423.jpg	fill de Pere Rodon pages y de Maria ab Antiga donsella filla de
+images/train_001634.jpg	jaume Cases pages de Montnegre defunct y de Miquela
+images/train_001276.jpg	Brayda moliner de dita parrochia y de Eularia defuncts ab Montserrada
+images/validation_000592.jpg	de Balsareny bisbat de Vich y de Magdalena defuncts
+images/train_000823.jpg	bisbat de Girona fill de Juan Massana pages y de Anna ab
+images/validation_000497.jpg	Dit dia rebere de Salvador Giro candaler de ceu de Lleyda habitant
+images/validation_000661.jpg	fill de Guillem Prats sastre y de Margarida ab Elena donsella filla
+images/test_000023.jpg	D i v e n d r e s <space> a <space> 2 6 <space> r e b e r e <space> d e <space> m r <space> L u y s <space> T o r r e s <space> n o t s <space> d e <space> B a r a <space> f i l l <space> d e <space> m r <space> L u y s
+images/train_002208.jpg	dit dia rebere de jaume Granera pages de jorba bisbat de Vich habitant
+images/train_000867.jpg	Arnau Denetis pages de Livia bisbat de Urgell y de Juana defuncts
+images/train_001733.jpg	Puig pages y de juana defuncta ab Maria donsella filla de Galcera
+images/validation_000156.jpg	pages y de Catherina defuncts ab Margarida donsella filla de
+images/train_002161.jpg	Dijous a 17 rebere de Agusti Tallaferro pages del regne de fraça
+images/train_001085.jpg	defunct y de Antiga
+images/train_000676.jpg	de Mathia Vidal parayre de Sparaguera
+images/train_002251.jpg	Dit dia rebere de francesch Oms pages de LLerona fill de Antoni Oms
+images/train_001946.jpg	fet ferrer y de Eularia defuncts de dita parrochia de Gava
+images/validation_000374.jpg	Puig parayre de Torello bisbat de Vich y de Margarida defuncts
+images/train_000525.jpg	ab Antiga donsella filla de Pere llores fuster habitant en Mataro
+images/train_000515.jpg	dit dia rebere de Miquel Mestre velluter habitant en Bara fill de Jua Mestre
+images/test_000066.jpg	d e <space> E s t e v a <space> D e r v i n e <space> p a r a y r e <space> d e <space> N a v a r r a <space> h a b i t a n t <space> e n <space> B a r a <space> y
+images/train_002181.jpg	ab Elena viuda de Antoni Gallissa cotxero de Bara
+images/test_000045.jpg	d e <space> S t <space> f e l i u <space> ç a c e r r a <space> b i s b a t <space> d e <space> # <space> V i c h <space> d e f u n c t <space> y <space> d e <space> f r a n c i s c a
+images/train_000283.jpg	Duran pages de dita parrochia y de Violant vivints ab Elisabeth don=
+images/test_000272.jpg	B o v a <space> s a b a t e r <space> y <space> d e <space> A n t i g a <space> d e f u n c t a <space> a b <space> E l i s a b e t h <space> J o a n a <space> v i u d a
+images/train_001990.jpg	pages de Bara defunct y de Catherina ab Hieronyma viuda de
+images/validation_000669.jpg	Dit dia rebere de Gabriel Miret burges de Vilafranca de Panaders fill de
+images/train_000350.jpg	dit dia rebere de Juan Alba hortola de Barca fill de jaume Alba hor=
+images/test_000690.jpg	D i v e n d r e s <space> a <space> 2 5 <space> r e b e r e <space> d e <space> R a m o n <space> P r a t s <space> h o s t a l e r <space> h a b i t a n t <space> e n <space> B a r a <space> v i u d o
+images/test_000622.jpg	d i l l u n s <space> a <space> 2 1 <space> r e b e r e <space> d e <space> F r a n c e s c h <space> F e r r e r <space> c o m i s s a r i <space> r e a l <space> d e <space> B a r a <space> v i u d o
+images/train_000986.jpg	dit dia rebere de Antoni Puiguert pages habitant en Bara fill de
+images/train_000237.jpg	Sayol pages y de Anna ab Catherina donsella filla de jaume Sala
+images/train_000980.jpg	en Montalegre Archebisbat de Tarragona
+images/train_001259.jpg	Francisca defunts
+images/test_000234.jpg	f i l l <space> d e <space> M a r c h <space> A n t o n i <space> M i l a n s <space> m a r i n e r <space> y <space> d e <space> t <space> d e f u n c t a <space> a b <space> M a r =
+images/test_000336.jpg	p a g e s <space> d e <space> S o l s o n a <space> d e f u n c t <space> y <space> d e <space> E u l a r i a
+images/train_001486.jpg	chebisbat de Tarragona viudo ab Angela viuda de Vicens Rull parayre
+images/train_000458.jpg	Puig mestre de organs y de Maryanna defuncts ab Eularia viuda
+images/train_000079.jpg	ab # Anna Elena dosella filla de Pere Morros corredor de bestias de
+images/train_002001.jpg	Bernat paller de Bara
+images/train_001327.jpg	habitant en Martorell fill de Bernat Aran pages de Cervera y de
+images/validation_000125.jpg	Benavaja pages de Saldes bisbat de Urgell y de t defuncta
+images/train_000002.jpg	Pro al pr de dits mes y any rebere de las sposallas
+images/train_002172.jpg	Dimecres a 16 rebere de Antoni Juan Verder fuster de Bara viudo
+images/test_000119.jpg	R o v i r a <space> p a g e s <space> y <space> d e <space> A n t o n i a <space> d e f u n c t s <space> a b <space> C a t h e r i n a <space> v i u d a <space> d e <space> M o n t s e r =
+images/train_002209.jpg	Dit dia rebere de Magi Mestre carnicer habitant en Bara fill de Juan
+images/train_000661.jpg	tant en Robi ab Angela viuda de Pere Riquer pages de Ull=
+images/test_000053.jpg	d e <space> P e r e <space> M a s <space> m e s t r e <space> d e <space> c a s e s <space> y <space> d e <space> J o a n a <space> a b <space> E u l a r i a <space> d o n s e l l a <space> f i l l a <space> d e
+images/train_001531.jpg	Dimars a 6 rebere de # Alfonso St Juan sabater de Martorell fill de
+images/test_000588.jpg	a b <space> C a t h e r i n a <space> d o s e l l a <space> f i l l a <space> d e <space> P e r e <space> O l l e r <space> p a g e s <space> d e <space> G e l i d a <space> y <space> d e <space> C a t h a
+images/test_000730.jpg	D i s s a p t e <space> a <space> 2 <space> r e b e r e <space> d e <space> E s t e v a <space> M i r o <space> p a r a y r e <space> d e <space> l a <space> B i s b a l <space> b i s b a t <space> d e <space> G e r o n a
+images/validation_000166.jpg	Dijous a 5 rebere de Antoni Granera negociant de Terrassa fill
+images/test_000547.jpg	f i l l a <space> d e l <space> S r <space> M i q u e l <space> P e r e z <space> s c r i v a <space> d e <space> m a n a m e t <space> y <space> d e <space> A n n a <space> d e f u n c t a
+images/validation_000289.jpg	cador de Mataro y de Margarida
+images/test_000377.jpg	d e <space> G i r o n a <space> h a b i t a n t <space> e n <space> B a r a <space> f i l l <space> d e <space> A n t o n i <space> G u a r d i a <space> c a l s a t e r <space> d e <space> a g u l l a
+images/train_001222.jpg	dit dia rebere de Pau Arbos assahonador de Bara fill de Juan
+images/validation_000233.jpg	Dimecres a 25 rebere de Joseph Nadal matalafer de Bara fill de
+images/test_000495.jpg	f i l l <space> d e <space> V i c e n s <space> T o r r o e l l a <space> p a g e s <space> y <space> d e <space> A n t i g a <space> d e f u n c t s <space> a b <space> M a r y a n n a
+images/train_000435.jpg	Bara fill de Pere Vallbona pages de Sta Coloma de Queralt y de
+images/train_002079.jpg	dona y de Maria
+images/train_000731.jpg	en lo Prat ab Juana # Ritoreta de fransa donsella habitat
+images/test_000050.jpg	t h e r i n a <space> d o n s e l l a <space> f i l l a <space> d e <space> M i q u e l <space> C o n d a l <space> s a b a t e r <space> d e <space> B a r a <space> y <space> d e
+images/train_002050.jpg	de Miquel Masot traginer de mar y de Montserrada defuncts
+images/train_001078.jpg	Magdalena defuncta
+images/validation_000619.jpg	Vilademaser y de t
+images/test_000517.jpg	a b <space> C a t h e r i n a <space> d o n s e l l a <space> f i l l a <space> d e <space> B e n e t <space> S o t e r e s <space> p a g e s <space> d e <space> P i e r a <space> y <space> d e <space> E u l a r i a
+images/validation_000629.jpg	Bara ab Elisabeth donsella filla de Antoni Juells corder de Bara y
+images/train_000013.jpg	raguera ab Maryanna dosella filla de Jua Valta texidor de
+images/train_001858.jpg	habitat en St Boy ab Magdalena donsella filla de Bernat figueres
+images/train_000647.jpg	defuncts ab Elisabeth viuda de Pere Amat pedrenyaler de Caldes
+images/train_001780.jpg	nyma donsella filla de Pere Mates parayre de dita vila defuct
+images/train_001202.jpg	Bara fill de Gaspar Artigues hortola de Mallorca y de Magdalena
+images/test_000755.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> J o a n <space> S o r i n y a n a <space> j o v e <space> m e s t r e <space> d e <space> c a s e s <space> d e l <space> r e g n e <space> d e <space> f r a ç a
+images/test_000712.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> J a u m e <space> B o v e r <space> c o r d e r <space> d e <space> B a r a <space> f i l l <space> d e <space> H i e r o n y m <space> B o v e r
+images/validation_000297.jpg	de dita parrochia
+images/test_000078.jpg	l a <space> S r a <space> d o n a <space> I s a b e l <space> d e <space> C a b r e r a <space> v i u d a <space> d e <space> d o <space> H i e r o n y <space> A l b a n e l l
+images/train_001092.jpg	populat fill del Sr don franco de Erill y de Orcau defunct y de la
+images/test_000005.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> f r a n c e s c h <space> V i a l a <space> p a g e s <space> d e l <space> r e g n e <space> d e <space> f r a n ç a <space> h a b i =
+images/train_002199.jpg	Victoria febres viuda de francesch fabres sastre de Sitges
+images/test_000554.jpg	t i n a <space> v i u d a <space> d e <space> t <space> C a s a n o v e s <space> c a l s a t e r <space> d e <space> a g u l l a <space> d e <space> B a r a
+images/validation_000464.jpg	filla de Gabriel Borrull pages de Valldoreig defunct y de Maryana
+images/train_000469.jpg	dit dia rebere de Juan Magrinya botiguer de telas de Bara fill de
+images/validation_000624.jpg	en la Llacuna ab Paula donsella filla de Pere Ricart pages de
+images/validation_000458.jpg	habitant en Palau Solitar fill de francesch Munt pages y de
+images/train_000047.jpg	defuncta
+images/test_000455.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> A n t i c h s <space> M a s a c h s <space> p a g e s <space> d e <space> B i g a s <space> f i l l <space> d e <space> M i q u e l
+images/train_002266.jpg	Busquets sabater de Bara defunct y de Salvadora
+images/train_001029.jpg	Mates dosella de dit lloch de Pierola
+images/train_002167.jpg	en Bara ab Maria viuda de Batista Vila pages mori en Ripoll
+images/train_001917.jpg	de Margarida
+images/validation_000112.jpg	viuda de t Mas pages de Argentona
+images/train_001563.jpg	apothecari # defunct y de Anna ab Anna donsella filla de Pere
+images/train_001576.jpg	del bisbat de barbastre en lo regne de Arago habitant en Aulesa
+images/train_000260.jpg	dit dia rebere de jaume Muntaner pages de St Genis de Horta
+images/validation_000114.jpg	ciant de Bara y de Elienor defuncts
+images/train_001729.jpg	fill de Antoni Pages pages de Parelada y de Elisabeth defuncts ab Maryanna
+images/validation_000459.jpg	Eularia ab Estasia donsella filla de Miquel Torres pages de
+images/test_000174.jpg	b a n y e s <space> y <space> d e <space> f r a n c i s c a <space> a b <space> f r a n c i s c a <space> d o n s e l l a <space> f i l l a <space> d e <space> j a u m e <space> J o f r e
+images/train_000655.jpg	dit dia rebere de francesch Nogues corder viudo de Bara ab Eu=
+images/validation_000242.jpg	Redondo pages y de Maria
+images/train_000626.jpg	miz sastre y de Raphela
+images/train_000449.jpg	Catherina defuncts ab Paula donsella filla de Miquel Ribes pages
+images/test_000457.jpg	v i u d a <space> d e <space> H i e r o n y m <space> G i n e s t o s <space> p a r a y r e <space> d e <space> d i t a <space> v i l a
+images/train_000192.jpg	Dissapte a 27 rebere de francesch Astella parxer de Bara fill de Se=
+images/test_000025.jpg	D i m a r s <space> a <space> 3 0 <space> r e b e r e <space> d e <space> H y a c i n t o <space> P a l a u d a r i e s <space> p a g e s <space> d e <space> A u l e s a <space> f i l l
+images/train_000372.jpg	de Miquela ab Eularia donsella filla de # Jua Valls pages de Corbera
+images/train_002021.jpg	Bara fill de Juan Sauquer parayre de dit lloch de Livia bisbat
+images/train_002087.jpg	Divendres a 27 rebere de Pere Vinyals tavarner del regne de frança
+images/train_000566.jpg	texidor de lli habitant en Bara viudo ab Elienor viuda de Pere
+images/train_000898.jpg	en Bara ab Catherina donsella filla de Pere Espanyol moliner
+images/train_001482.jpg	viuda de Antoni Rocha tavarner de LLoret bisbat de Girona
+images/train_001635.jpg	Prats parayre y de Eularia defuncts ab Catherina donsella filla de
+images/validation_000062.jpg	de Dionys Homs pages de Orrius y de Angela
+images/train_001754.jpg	dita parrochia y de Paula
+images/validation_000066.jpg	de Panaders
+images/validation_000731.jpg	Dit dia rebere de Hyacinto Mascurt parayre de Piera habitant
+images/train_001076.jpg	diumege a 26 rebere de Ramo Giralt sabater del Regne de
+images/train_002207.jpg	Dilluns a 21 rebere de Juan Strada cirurgia de Perpinya habitant en
+images/train_002299.jpg	de Juan Corbera pages y de francina defuncts ab Magdalena don=
+images/validation_000723.jpg	Dit dia rebere de Pere Jua Canals traginer del regne de frança ha=
+images/train_001010.jpg	bregat viudo ab Margarida dosella filla de Benet Via pages de
+images/test_000749.jpg	x a d o r <space> y <space> d e <space> f r a n c i n a <space> d e f u n c t a <space> a b <space> M a r i a <space> d o n s e l l a <space> f i l l a <space> d e <space> V a l e n t i <space> V i n e t
+images/train_001084.jpg	ronyma dosella filla de Jua Tort pages de Terrasola y de
+images/train_000585.jpg	viudo ab Beneta viuda de jaume Xiol corredor de animals
+images/train_001879.jpg	bitant en St Andreu de Llavaneres ab Angela viuda de Pere Vila
+images/validation_000305.jpg	Dit dia rebere de ferriol Casale cotxero del regne de frança habitant
+images/test_000553.jpg	d o n s e l l a <space> f i l l a <space> d e l <space> H o s p i t a l <space> G e n e r a l <space> d e <space> S t a <space> C r e u
+images/train_001620.jpg	y de francisca defuncts
+images/train_002044.jpg	Roig pages # de Sitges defunct y de Anna ab Hieronyma donsella
+images/validation_000356.jpg	Dit dia rebere de Antich Castellet parayre de Caldes de Monbuy fill de
+images/train_000870.jpg	en Bara fill de Miquel Roses pescador de Terragona y de
+images/train_001288.jpg	Jua Rossell negociant de Bara y de Catherina defuncts ab Cecilia
+images/validation_000612.jpg	del regne de frança habitant en St Cugat de Vallers ab francina viuda
+images/test_000519.jpg	s e l l a <space> f i l l a <space> d e <space> A n t o n i <space> P l a n e s <space> v e d r i e r <space> y <space> d e <space> A n t i g a <space> d e f u n c t s <space> t o t s <space> d e
+images/train_002323.jpg	Bara ab Hieronyma dosella filla de Pere Jua Blay negociant y de
+images/train_000864.jpg	Elisabeth defuncts
+images/train_000271.jpg	funct y de la Sra Hieronyma
+images/train_001096.jpg	dissapte a 25 rebere de Guille Capdevila parayre habitat en Bara
+images/train_001643.jpg	dona # bisbat de Urgell defunct y de juana
+images/train_001292.jpg	Bara fill de Raphel Rubi burges de Puigcerda y de Anna Rubi
+images/test_000227.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> P e r e <space> G u a l <space> p a r a y r e <space> d e l <space> r e g n e <space> d e <space> f r a n ç a <space> h a b i t a n t <space> e n <space> S a b a d e l l
+images/train_000131.jpg	dit dia rebere de jaume Pou parayre de Terrassa fill de Antich Pou fuster
+images/test_000296.jpg	D i m e c r e s <space> a <space> 1 2 <space> r e b e r e <space> d e <space> J o a n <space> G r a s <space> p a g e s <space> d e <space> P i e r o l a <space> h a b i t a n t <space> e n <space> T o r =
+images/train_000938.jpg	Puiguentos pages de Aulesa de Montserrat y de Elisabeth
+images/train_000229.jpg	Hieronym Morera pages de dita parrochia y de Eularia defuncta
+images/test_000108.jpg	d e <space> S e b a s t i a <space> P a l o m a <space> p a g e s <space> y <space> d e <space> E u l a r i a <space> a b <space> M a g d a l e n a <space> d o n s e l l a <space> f i l l a
+images/test_000077.jpg	D i t <space> d i a <space> d o n a r e <space> l l i c e n t i a <space> g r a t i s <space> a <space> J o a n <space> P i <space> p a g e s <space> d e l <space> r e g n e <space> d e <space> f r a n ç a
+images/test_000382.jpg	d o n s e l l a <space> f i l l a <space> d e <space> P e r e <space> O r t i g u e s <space> s a s t r e <space> d e <space> B a r a <space> d e f u n c t <space> y <space> d e <space> A n g e l a
+images/train_001328.jpg	Dijous a 11 rebere de Antoni Morell droguer de Calella habitant en Bara
+images/validation_000476.jpg	en Vallromanes fill de Joan Gili pages y de Catherina defuncts
+images/train_000899.jpg	dit dia rebere de Salvador Cellent jove cilurgia de Bara viudo ab
+images/train_002281.jpg	Samunta pages y de Juana ab Eularia viuda de Juan Andusillo
+images/validation_000490.jpg	Dit dia rebere de Hieronym Muntalt pages de St Andreu de Lle=
+images/validation_000293.jpg	tich Bell parayre defunct y de Antiga ab dorothea donsella filla
+images/train_001105.jpg	Muntaner imaginayre de Bara y de Juana defuncts ab Juana do=
+images/train_001554.jpg	laria donsella filla de Juan Peredaltes pages de Orista bisbat de
+images/train_001893.jpg	habitant en Granollers viudo ab Angela donsella filla de Esteva
+images/train_000669.jpg	fill de Hieronym Tapies y de t ab Contesina viuda
+images/train_001002.jpg	nollers ab Elisabeth donsella filla de Blasi duran pages de Corro Devall
+images/validation_000658.jpg	Dissapte a 13 rebere de mr Antoni ferrer nots real de Bara viudo ab
+images/train_002187.jpg	fill de t Vench parayre defunct y de t ab Scolastica donsella
+images/train_000700.jpg	dit dia rebere de Jaume Palmer pages de Bara fill de Jua Palmer
+images/validation_000272.jpg	# Montserrat Ginestar mestre de cases y de Catherina defuncts ab
+images/validation_000167.jpg	Dit dia rebere de Llorens Puig Llentisclar negociant de Mataro fill
+images/train_000292.jpg	flaquer cilurgia y de Hieronyma vivents ab francisca donsella filla de
+images/validation_000326.jpg	en Bara ab Maria viuda de Miquel Colomer corder de Bara
+images/validation_000471.jpg	donsella filla de Montserrat Panyella pages y de Maryanna
+images/validation_000546.jpg	Dilluns a 24 rebere de Pere Terrats pages de St Marti de la Mota
+images/train_001093.jpg	rer botiguer de comanda defunct y de la Sra Elisabeth joana ab la
+images/validation_000417.jpg	Oller als Vilar y de Margarida defuncts
+images/train_000858.jpg	mas Argullol blanquer defunct y de Anna Maria ab Hieronyma
+images/train_001455.jpg	en Mollet viudo ab Paula donsella filla de Jua Mollet pages de Mollet
+images/train_001516.jpg	Bara fill de Antoni Viguet blanquer de Mallorca y de Hieronyma
+images/train_000666.jpg	de Terrassa y de Marianna
+images/train_001494.jpg	dit dia rebere de Juan Sunyol pages de Badalona fill de Jua Sunyol
+images/test_000346.jpg	C l a r a <space> d o n s e l l a <space> f i l l a <space> d e <space> B e r n a t <space> C a r a m a n y <space> b o t e r <space> d e <space> M a t a r o <space> y <space> d e <space> M a r i a
+images/validation_000275.jpg	Bara fill de juan Marti de Gulladols pages y de Angela defuncta
+images/train_001857.jpg	ab Catherina viuda de francesch Pedro parayre de dita vila
+images/test_000711.jpg	y <space> d e <space> t
+images/test_000704.jpg	R a m e n t o l <space> p a g e s <space> y <space> d e <space> E l e o n o r <space> a b <space> A n n a <space> d o n s e l l a <space> f i l l a <space> d e <space> B a r n a t
+images/train_000413.jpg	y de Elisabeth
+images/test_000479.jpg	y <space> d e <space> M a g d a l e n a <space> d e f u n c t s
+images/train_000953.jpg	divendres a 6 rebere de Juan Molins ferrer de Begas fill de juan
+images/test_000433.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> j o a n <space> P a u <space> G a y r i s <space> f u s t e r <space> d e <space> B a r a <space> f i l l <space> d e <space> A n t o n i <space> P a u
+images/train_000326.jpg	bisbat de Vich y de Catherina defuncts
+images/train_001185.jpg	Divendres a 8 rebere de Pau Panyella pages de Corbera fill de Antoni Pa=
+images/test_000096.jpg	r a y r e <space> d e <space> B a r a <space> y <space> d e <space> M a g d a l e n a <space> d e f u n c t s
+images/train_000933.jpg	dit dia rebere del Sr Gregori de Salamanca doctor en medicina natural
+images/validation_000380.jpg	St Esteva de Vilanova defunct y de Antiga
+images/train_000187.jpg	pages y de Antonia defuncts ab Antiga donsella filla de Montserrat
+images/train_000284.jpg	sabeth donsella filla de Andreu Bosch pages de Llissa demunt
+images/validation_000557.jpg	Coyua scudaller de Bara
+images/train_000787.jpg	Violant
+images/validation_000036.jpg	Dit dia rebere de jaume Moya pages de St Andreu de Palomar fill de
+images/train_001481.jpg	donsella filla de Guillem Munt traginer de Mataro y de Speransa
+images/test_000459.jpg	B o x e r <space> p a g e s <space> d e <space> f r a n ç a <space> h a b i t a n t <space> e n <space> B a r a
+images/test_000556.jpg	D i l l u n s <space> a <space> 1 4 <space> r e b e r e <space> d e <space> A <space> f r a n c e s c h <space> P u i g <space> c i u t e d a <space> h o n r a t <space> d e <space> B a r a
+images/validation_000205.jpg	Patau mestre de cases y de Gervasia
+images/validation_000246.jpg	fill de Jua Palau pages defunct y de francisca ab Margarida dosella
+images/test_000327.jpg	g a r i d a <space> d o n s e l l a <space> f i l l a <space> d e <space> R a f e l <space> A r e n a s <space> p a r a y r e <space> d e <space> G i r o n a <space> y <space> d e <space> J o a n a
+images/train_001200.jpg	Bara ab Elisabeth viuda de Jua Sexa mestre de cases de Bara
+images/train_002261.jpg	Dit dia rebere de Joseph Puig mariner de Bara fill de Giralt Puig
+images/train_000322.jpg	dit dia rebere de juan fabregues ferrer de St Cugat de Vallers fill de
+images/train_001550.jpg	Diumege a 4 rebere de Matheu Marcer calsater de agulla de Bellmut
+images/train_000511.jpg	Dijous a 13 rebere de Antoni Mir pages de St feliu de Cabrera fill
+images/train_002196.jpg	nosa del bisbat de Guesca en lo regne de Arago fill de Nadal
+images/train_001881.jpg	pages de Granollers
+images/validation_000660.jpg	Dit dia rebere de Antoni Del Peig parayre del regne de frança habitant
+images/train_000177.jpg	lloch de Vergili de la Vilella parrochia del Alba bisbat de bara y de
+images/test_000235.jpg	f u n c t <space> y <space> d e <space> E l i s a b e t h
+images/train_001083.jpg	Girona fill de Pau Orta pages de dita parrochia y de Eularia defucts
+images/validation_000144.jpg	Dit dia rebere de Pere Gori pages de Vilamajor fill de Pere Gori
+images/train_001408.jpg	Divendres a 19 rebere de juan Gasso forner de Bara viudo ab Catheri=
+images/test_000401.jpg	d e <space> d i t a <space> v i l a
+images/train_001470.jpg	Dit dia rebere de Juan Guinovart pages del Pedros de Vilabella Ar=
+images/train_000396.jpg	Violant ab Paula Maria dosella orfana filla de Jua Pau Gras
+images/train_001556.jpg	guera defunct y de Magdalena
+images/train_000379.jpg	Guille Masseres perayre defunct y de Margarida ab Anna
+images/train_000418.jpg	Dissapte al pr de dit rebere de jaume Vallbona tavarner habitant en
+images/train_001378.jpg	dit dia rebere de Pere Pau Verdu corredor de orella de Bara fill de
+images/test_000057.jpg	R i e r a <space> p a g e s <space> d e f u n c t <space> y <space> d e <space> A n t i g a <space> a b <space> M a r g a r i d a <space> d o n s e l l a <space> f i l l a <space> d e
+images/train_000881.jpg	donsella filla de t y de t
+images/train_000636.jpg	dit dia rebere de Hieronym Arenys notari real de Bara fill de
+images/train_001138.jpg	talet ab francina donsella filla de Hieronym Vinyals traginer de mar
+images/train_001393.jpg	fill de Gabriel Comes parayre y de Eufrahina defuncts ab Eularia donsella
+images/train_001731.jpg	Dissapte a 17 rebere de jaume Pages pages de Parelada habitant en Bara
+images/validation_000531.jpg	frança habitat en Bara ab Maryanna donsella filla de Antoni Trilla
+images/train_000653.jpg	ab Maria donsella filla de March March Maseres parayre
+images/test_000230.jpg	U r g e l l <space> h a b i t a n t <space> e n <space> B a r a <space> f i l l <space> d e <space> J o a n <space> S i r e r a <space> p a r a y r e <space> y <space> d e <space> f r a n c i s c a <space> d e =
+images/test_000038.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> M a r t i <space> C l a u s e t <space> a d r o g u e r <space> d e <space> B a r a <space> v i u d o <space> a b <space> M a g =
+images/train_000026.jpg	Colomer pages de Vilassar y de Antiga ab Hieronyma
+images/test_000490.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> P e r e <space> M a r t y r <space> M i r a l l e s <space> p a r a y r e <space> d e <space> M a n r e s a <space> h a b i t a n t <space> e n
+images/test_000245.jpg	D i t <space> d i a <space> r e b e r e <space> d e <space> R a m o n <space> M a r t i <space> h o r t o l a <space> d e <space> B a r a <space> v i u d o <space> a b <space> P a u l a <space> v i u d a
+images/train_001139.jpg	defuncts ab Mathiana dosella filla de Jua Guardi# blanquer deBarca defunct
+images/validation_000085.jpg	Dit dia rebere de Hieronym Borrell de Caldes de Monbuy retorse=
+images/train_001839.jpg	Antoni Clariana corredor de coll de Bara y de Anna
+images/train_000902.jpg	gela donsella filla de Juan Bosch sabater de Moya defuct y de joana
+images/train_001718.jpg	ab Paula donsella filla de joseph Sagarra candaler de cera
+images/train_002232.jpg	Dit dia donare llicentia gratis a Juan Camps pages del Hospitalet
+images/validation_000544.jpg	de Bernat Cases texidor de llana y de Valentina ab Hieronyma viuda
+images/validation_000333.jpg	jaume Joan sabater de Bara y de Hieronyma defuncts
+images/validation_000604.jpg	defunct y de Eleonor ab Angela donsella filla de Miquel Sala pa=
+images/train_000814.jpg	me lledo mercader de Girona y de Hieronyma defuncts
+images/train_002298.jpg	ab Monica donsella filla de Benet Balsa parayre de Grano=
+images/train_000108.jpg	de Vich y de francisca defuncts
+images/validation_000137.jpg	fill de Pere Sagarra traginer y de francina ab Magdalena dosella
+images/train_002069.jpg	filla de Emanuel Massaguer parayre de Bara defunct y de Stephania
+images/train_000952.jpg	defunct y de Elienor ab Elisabeth donsella filla de Bernat Oriach
+images/train_000895.jpg	de francesch Pujalt pages y de Mariangela defuncts ab marian=
+images/train_000383.jpg	funct y de Margarida
+images/train_000122.jpg	y de Juana
+images/train_000130.jpg	y de Margarida
+images/train_001728.jpg	Dit dia rebere per mans del Sr canonge Amell de# Andreu Marrugat
+images/validation_000090.jpg	Divendres a 15 rebere de Pau Mas ferrer de Premia fill de Ramon
+images/train_000356.jpg	donsella filla de Juan Vicens carder y de Maryanna
+images/train_002233.jpg	de Bernat Bri pages
+images/test_000584.jpg	M a t h e u <space> B a l l e <space> p a g e s <space> d e <space> A r g e n t o n a <space> d e f u n c t <space> y <space> d e <space> E u l a r i a
+images/validation_000705.jpg	jaume Mates pages de Gerona y de Hieronyma defuncts ab
+images/validation_000443.jpg	Divendres a 14 rebere de Pere Mas corredor de coll de Bara
+images/train_000419.jpg	Dilluns a 3 rebere de Giralt del Bosch botiguer de vidre de frança ha=
+images/validation_000688.jpg	pages de Vilassar y de Eleonor defuncta
+images/train_000571.jpg	Divendres a 28 rebere de Samso Demont frances # mestre de cases
+images/train_000914.jpg	Dijous a 5 rebere de Juan Morral pages de Ebrera fill de Juan Morral
+images/train_001003.jpg	de lli de St Andreu de llavaneres defunct y de Speransa
+images/train_001126.jpg	y de Elienor
+images/validation_000709.jpg	Castells manya mori en Bara
+images/train_000102.jpg	de Cellent bisbat de Vich
+images/train_000456.jpg	de Garau Devall parayre de Besalu mori en Bara
+images/validation_000291.jpg	ferrer mestre de axa de Canet y de Juana defuncts

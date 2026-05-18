@@ -15,13 +15,12 @@ from torchvision import transforms
 # Constantes globales
 IMG_WIDTH = 512
 IMG_HEIGHT = 32
-CHARS = "abcdefghijklmnopqrstuvwxyz0123456789.,!?;:()'\"- "
+CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?;:()'\"- "
 CHAR2IDX = {ch: i+1 for i, ch in enumerate(CHARS)}  # 0 es blank
 IDX2CHAR = {i+1: ch for i, ch in enumerate(CHARS)}
 NUM_CLASSES = len(CHARS) + 1 #Blanket incluido
 
 def text_to_indices(text):
-    text = text.lower()
     return [CHAR2IDX[c] for c in text if c in CHAR2IDX]
 
 def indices_to_text(indices):
@@ -49,7 +48,6 @@ class IAMDataset(Dataset):
                 parts = line.split('\t')
                 if len(parts) == 2:
                     img_path, label = parts
-                    label = label.lower()
                 else:
                     continue
 
