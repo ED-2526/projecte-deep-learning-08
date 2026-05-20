@@ -12,7 +12,7 @@ except ImportError:
     Levenshtein = None
 
 def levenshtein_distance(a, b):
-    if Levenshtein is not None:
+    if Levenshtein is not None and isinstance(a, str) and isinstance(b, str):
         return Levenshtein.distance(a, b)
 
     previous = list(range(len(b) + 1))
@@ -29,7 +29,8 @@ def levenshtein_distance(a, b):
 
 def make_test_prediction_table(examples):
     table = wandb.Table(columns=[
-        "index", "image", "target", "prediction", "cer", "word_correct", "word_error",
+        "index", "image", "target", "prediction", "cer",
+        "line_correct", "line_error", "word_edit_distance", "word_error_rate",
     ])
     for example in examples:
         table.add_data(
@@ -38,8 +39,10 @@ def make_test_prediction_table(examples):
             example["target"],
             example["prediction"],
             example["cer"],
-            example["word_correct"],
-            example["word_error"],
+            example["line_correct"],
+            example["line_error"],
+            example["word_edit_distance"],
+            example["word_error_rate"],
         )
     return table
 
@@ -51,12 +54,20 @@ def test(config):
         train=False,
         zip_path=getattr(config, "zip_path", None),
         max_width=getattr(config, "max_width", IMG_WIDTH),
+        text_normalization=getattr(config, "text_normalization", "none"),
+        image_preprocess=getattr(config, "image_preprocess", "none"),
     )
     if len(test_dataset) == 0:
-        raise ValueError("El dataset de test esta vacio. Revisa rutas, txt e iam_dataset.zip.")
+        raise ValueError("El dataset de test esta vacio. Revisa rutas, txt e imagenes.")
 
-    test_loader = DataLoader(test_dataset, batch_size=config.batch_size, shuffle=False,
-                             num_workers=2, collate_fn=collate_fn)
+    test_loader = DataLoader(
+        test_dataset,
+        batch_size=config.batch_size,
+        shuffle=False,
+        num_workers=getattr(config, "num_workers", 2),
+        collate_fn=collate_fn,
+        pin_memory=torch.cuda.is_available(),
+    )
     
     model = CRNN(
         NUM_CLASSES,
@@ -72,7 +83,9 @@ def test(config):
     total_edit_distance = 0
     total_target_chars = 0
     total_samples = 0
-    correct_words = 0
+    correct_lines = 0
+    total_word_edit_distance = 0
+    total_target_words = 0
     examples = []
     requested_examples = getattr(config, "test_samples", 0)
     output_path = getattr(config, "test_output", None)
@@ -103,9 +116,15 @@ def test(config):
                 cer = edit_distance / max(len(real_text), 1)
                 total_edit_distance += edit_distance
                 total_target_chars += len(real_text)
-                word_correct = pred_text == real_text
-                word_error = not word_correct
-                correct_words += int(word_correct)
+                line_correct = pred_text == real_text
+                line_error = not line_correct
+                correct_lines += int(line_correct)
+                pred_words = pred_text.split()
+                real_words = real_text.split()
+                word_edit_distance = levenshtein_distance(pred_words, real_words)
+                word_error_rate = word_edit_distance / max(len(real_words), 1)
+                total_word_edit_distance += word_edit_distance
+                total_target_words += len(real_words)
                 total_samples += 1
                 #print(f"Target='{real_text}', Prediction='{pred_text}'")
                 if len(examples) < requested_examples:
@@ -116,24 +135,31 @@ def test(config):
                         "target": real_text,
                         "prediction": pred_text,
                         "cer": cer,
-                        "word_correct": word_correct,
-                        "word_error": word_error,
+                        "word_correct": line_correct,
+                        "word_error": line_error,
+                        "line_correct": line_correct,
+                        "line_error": line_error,
+                        "word_edit_distance": word_edit_distance,
+                        "word_error_rate": word_error_rate,
                     })
 
             if progress_every and batch_idx % progress_every == 0:
                 partial_cer = total_edit_distance / max(total_target_chars, 1)
-                partial_word_accuracy = correct_words / max(total_samples, 1)
-                partial_wer = 1.0 - partial_word_accuracy
+                partial_line_accuracy = correct_lines / max(total_samples, 1)
+                partial_line_error_rate = 1.0 - partial_line_accuracy
+                partial_word_level_wer = total_word_edit_distance / max(total_target_words, 1)
                 print(
                     f"Procesados {total_samples} ejemplos - "
                     f"CER parcial: {partial_cer:.4f} - "
-                    f"word_accuracy parcial: {partial_word_accuracy:.4f} - "
-                    f"WER parcial: {partial_wer:.4f}"
+                    f"exact_line_accuracy parcial: {partial_line_accuracy:.4f} - "
+                    f"line_error_rate parcial: {partial_line_error_rate:.4f} - "
+                    f"word_level_WER parcial: {partial_word_level_wer:.4f}"
                 )
 
     cer_global = total_edit_distance / max(total_target_chars, 1)
-    word_accuracy = correct_words / max(total_samples, 1)
-    wer = 1.0 - word_accuracy
+    line_accuracy = correct_lines / max(total_samples, 1)
+    line_error_rate = 1.0 - line_accuracy
+    word_level_wer = total_word_edit_distance / max(total_target_words, 1)
 
     if examples and not quiet_examples:
         print("\nEjemplos de prediccion en test:")
@@ -154,6 +180,7 @@ def test(config):
                 fieldnames=[
                     "index", "image", "target", "prediction",
                     "cer", "word_correct", "word_error",
+                    "line_correct", "line_error", "word_edit_distance", "word_error_rate",
                 ],
             )
             writer.writeheader()
@@ -161,8 +188,9 @@ def test(config):
         print(f"\nPredicciones guardadas en: {output_path}")
 
     print(f"Character Error Rate en test: {cer_global:.4f}")
-    print(f"Word Accuracy en test: {word_accuracy:.4f}")
-    print(f"Word Error Rate en test: {wer:.4f}")
+    print(f"Exact Line Accuracy en test: {line_accuracy:.4f}")
+    print(f"Exact Line Error Rate en test: {line_error_rate:.4f}")
+    print(f"Word-level WER en test: {word_level_wer:.4f}")
 
     if wandb_mode != "disabled":
         run_name = wandb_name or f"test_{checkpoint_path}"
@@ -172,16 +200,21 @@ def test(config):
             config={
                 "mode": "test",
                 "checkpoint_path": checkpoint_path,
+                "dataset": getattr(config, "dataset", None),
                 "test_gt": config.test_gt,
                 "img_dir": config.img_dir,
+                "text_normalization": getattr(config, "text_normalization", "none"),
+                "image_preprocess": getattr(config, "image_preprocess", "none"),
+                "max_width": getattr(config, "max_width", IMG_WIDTH),
                 "test_samples": requested_examples,
             },
             mode=wandb_mode,
         ):
             log_data = {
                 "test_cer": cer_global,
-                "test_word_accuracy": word_accuracy,
-                "test_wer": wer,
+                "test_exact_line_accuracy": line_accuracy,
+                "test_exact_line_error_rate": line_error_rate,
+                "test_word_level_wer": word_level_wer,
                 "test_total_samples": total_samples,
             }
             if examples:

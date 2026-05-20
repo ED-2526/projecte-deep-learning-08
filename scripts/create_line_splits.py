@@ -23,18 +23,24 @@ class DatasetConfig:
     default_root: Path
     source_gt: Optional[str] = None
     parquet_files: tuple[str, ...] = ()
+    official_splits: tuple[tuple[str, str], ...] = ()
 
 
 DATASETS = {
     "iam": DatasetConfig(
         name="iam",
-        default_root=GROUP_ROOT / "iam_dataset",
+        default_root=Path("/home/datasets/iam_dataset"),
         source_gt="linux_gt.txt",
     ),
     "esposalles": DatasetConfig(
         name="esposalles",
         default_root=Path("/home/datasets/esposalles"),
         parquet_files=("train.parquet", "validation.parquet", "test.parquet"),
+        official_splits=(
+            ("train.parquet", "train_gt_official.txt"),
+            ("validation.parquet", "val_gt_official.txt"),
+            ("test.parquet", "test_gt_official.txt"),
+        ),
     ),
 }
 
@@ -137,6 +143,29 @@ def split_lines(lines, seed=SEED, train_ratio=TRAIN_RATIO, val_ratio=VAL_RATIO):
     }
 
 
+def build_dataset_splits(dataset_name, dataset_root, image_root, extract_images=True, seed=SEED):
+    config = DATASETS[dataset_name]
+
+    if config.official_splits:
+        splits = {}
+        for parquet_name, output_name in config.official_splits:
+            splits[output_name] = read_parquet_dataset(
+                dataset_root,
+                image_root,
+                (parquet_name,),
+                extract_images,
+            )
+        return splits, image_root
+
+    lines, img_dir = load_dataset_lines(
+        dataset_name,
+        dataset_root,
+        image_root,
+        extract_images=extract_images,
+    )
+    return split_lines(lines, seed=seed), img_dir
+
+
 def write_splits(splits, output_dir):
     output_dir.mkdir(parents=True, exist_ok=True)
     for filename, split_lines in splits.items():
@@ -146,7 +175,10 @@ def write_splits(splits, output_dir):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Genera splits 80/10/10 para IAM o Esposalles."
+        description=(
+            "Genera splits 80/10/10 para IAM. Para Esposalles conserva los "
+            "splits oficiales train/validation/test de los parquet."
+        )
     )
     parser.add_argument(
         "dataset",
@@ -194,13 +226,13 @@ def main():
     output_dir = args.output_dir or default_output_dir(args.dataset)
     image_root = args.image_root or (PROJECT_ROOT / "data" / args.dataset)
 
-    lines, img_dir = load_dataset_lines(
+    splits, img_dir = build_dataset_splits(
         args.dataset,
         dataset_root,
         image_root,
         extract_images=not args.no_extract_images,
+        seed=args.seed,
     )
-    splits = split_lines(lines, seed=args.seed)
     write_splits(splits, output_dir)
 
     print(f"Splits guardados en: {output_dir}")

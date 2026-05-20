@@ -5,7 +5,7 @@ from pathlib import Path
 
 import torch
 from torch.utils.data import Dataset, DataLoader
-from PIL import Image
+from PIL import Image, ImageOps
 import numpy as np
 import torch.nn.functional as F
 from torch.nn import CTCLoss
@@ -15,10 +15,42 @@ from torchvision import transforms
 # Constantes globales
 IMG_WIDTH = 512
 IMG_HEIGHT = 32
-CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?;:()'\"- "
+CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?;:()'\"- #&+/*"
 CHAR2IDX = {ch: i+1 for i, ch in enumerate(CHARS)}  # 0 es blank
 IDX2CHAR = {i+1: ch for i, ch in enumerate(CHARS)}
 NUM_CLASSES = len(CHARS) + 1 #Blanket incluido
+
+def normalize_text(text, mode="none"):
+    text = str(text).strip()
+    if mode in (None, "none"):
+        return text
+    if mode != "esposalles":
+        raise ValueError(f"Normalizacion de texto no soportada: {mode}")
+
+    text = text.replace("ç", "c").replace("Ç", "C")
+    text = text.replace("=", "").replace("#", "")
+
+    tokens = text.split()
+    if any(token.lower() == "<space>" for token in tokens):
+        words = []
+        current_word = []
+        for token in tokens:
+            if token.lower() == "<space>":
+                if current_word:
+                    words.append("".join(current_word))
+                    current_word = []
+                continue
+            current_word.append(token)
+
+        if current_word:
+            words.append("".join(current_word))
+
+        return " ".join(words)
+
+    if tokens and all(len(token) == 1 for token in tokens):
+        return "".join(tokens)
+
+    return " ".join(text.split())
 
 def text_to_indices(text):
     return [CHAR2IDX[c] for c in text if c in CHAR2IDX]
@@ -26,11 +58,34 @@ def text_to_indices(text):
 def indices_to_text(indices):
     return ''.join([IDX2CHAR[idx] for idx in indices if idx in IDX2CHAR])
 
+def preprocess_image(img, mode="none"):
+    if mode in (None, "none"):
+        return img
+    if mode == "autocontrast":
+        return ImageOps.autocontrast(img)
+    if mode == "binarize":
+        return img.point(lambda p: 255 if p > 180 else 0)
+    if mode == "autocontrast_binarize":
+        img = ImageOps.autocontrast(img)
+        return img.point(lambda p: 255 if p > 180 else 0)
+    raise ValueError(f"Preprocesado de imagen no soportado: {mode}")
+
 class IAMDataset(Dataset):
-    def __init__(self, gt_file, img_dir, train=True, zip_path=None, max_width=IMG_WIDTH):
+    def __init__(
+        self,
+        gt_file,
+        img_dir,
+        train=True,
+        zip_path=None,
+        max_width=IMG_WIDTH,
+        text_normalization="none",
+        image_preprocess="none",
+    ):
         self.img_dir = Path(img_dir)
         self.zip_path = Path(zip_path) if zip_path else None
         self.max_width = max_width
+        self.text_normalization = text_normalization
+        self.image_preprocess = image_preprocess
         self.samples = []
         self._zip_file = None
         zip_names = set()
@@ -40,6 +95,8 @@ class IAMDataset(Dataset):
                 zip_names = set(zf.namelist())
 
         missing_count = 0
+        empty_label_count = 0
+        unknown_chars = set()
         with open(gt_file, 'r') as f:
             for line in f:
                 line = line.strip()
@@ -48,21 +105,33 @@ class IAMDataset(Dataset):
                 parts = line.split('\t')
                 if len(parts) == 2:
                     img_path, label = parts
+                    label = normalize_text(label, text_normalization)
                 else:
+                    continue
+
+                filtered_label = ''.join([ch for ch in label if ch in CHAR2IDX])
+                unknown_chars.update(ch for ch in label if ch not in CHAR2IDX)
+                if not filtered_label:
+                    empty_label_count += 1
                     continue
 
                 full_path = self.img_dir / img_path
                 zip_member = f"iam_dataset/{img_path}"
 
                 if full_path.exists():
-                    self.samples.append(("file", str(full_path), label))
+                    self.samples.append(("file", str(full_path), filtered_label))
                 elif zip_member in zip_names:
-                    self.samples.append(("zip", zip_member, label))
+                    self.samples.append(("zip", zip_member, filtered_label))
                 else:
                     missing_count += 1
 
         if missing_count > 0:
             print(f"Advertencia: {missing_count} muestras ignoradas porque la imagen no existe en {gt_file}")
+        if empty_label_count > 0:
+            print(f"Advertencia: {empty_label_count} muestras ignoradas porque la etiqueta queda vacia en {gt_file}")
+        if unknown_chars:
+            chars = ''.join(sorted(unknown_chars))
+            print(f"Advertencia: caracteres no soportados eliminados de {gt_file}: {chars}")
 
         if train:
             self.transform = transforms.Compose([
@@ -99,6 +168,7 @@ class IAMDataset(Dataset):
             print(f"Error cargando {img_ref}: {e}, usando imagen negra")
             img = Image.new('L', (IMG_HEIGHT * 4, IMG_HEIGHT), 0)
 
+        img = preprocess_image(img, self.image_preprocess)
         original_width, original_height = img.size
         aspect_ratio = original_width / max(original_height, 1)
         label_indices = text_to_indices(label)
@@ -133,21 +203,57 @@ def collate_fn(batch):
         torch.tensor(label_lengths, dtype=torch.long),
     )
 
-def make_loaders(train_gt, val_gt, test_gt, img_dir, batch_size, zip_path=None, max_width=IMG_WIDTH):
-    train_dataset = IAMDataset(train_gt, img_dir, train=True, zip_path=zip_path, max_width=max_width)
-    val_dataset = IAMDataset(val_gt, img_dir, train=False, zip_path=zip_path, max_width=max_width)
-    test_dataset = IAMDataset(test_gt, img_dir, train=False, zip_path=zip_path, max_width=max_width)
+def make_loaders(
+    train_gt,
+    val_gt,
+    test_gt,
+    img_dir,
+    batch_size,
+    zip_path=None,
+    max_width=IMG_WIDTH,
+    text_normalization="none",
+    image_preprocess="none",
+    num_workers=2,
+):
+    train_dataset = IAMDataset(
+        train_gt,
+        img_dir,
+        train=True,
+        zip_path=zip_path,
+        max_width=max_width,
+        text_normalization=text_normalization,
+        image_preprocess=image_preprocess,
+    )
+    val_dataset = IAMDataset(
+        val_gt,
+        img_dir,
+        train=False,
+        zip_path=zip_path,
+        max_width=max_width,
+        text_normalization=text_normalization,
+        image_preprocess=image_preprocess,
+    )
+    test_dataset = IAMDataset(
+        test_gt,
+        img_dir,
+        train=False,
+        zip_path=zip_path,
+        max_width=max_width,
+        text_normalization=text_normalization,
+        image_preprocess=image_preprocess,
+    )
 
     for name, dataset in [("train", train_dataset), ("val", val_dataset), ("test", test_dataset)]:
         if len(dataset) == 0:
             raise ValueError(f"El dataset {name} esta vacio. Revisa rutas, txt e imagenes.")
     
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, 
-                              num_workers=2, collate_fn=collate_fn, pin_memory=True)
+    pin_memory = torch.cuda.is_available()
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True,
+                              num_workers=num_workers, collate_fn=collate_fn, pin_memory=pin_memory)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False,
-                            num_workers=2, collate_fn=collate_fn, pin_memory=True)
+                            num_workers=num_workers, collate_fn=collate_fn, pin_memory=pin_memory)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False,
-                             num_workers=2, collate_fn=collate_fn, pin_memory=True)
+                             num_workers=num_workers, collate_fn=collate_fn, pin_memory=pin_memory)
     return train_loader, val_loader, test_loader
 
 def make(config, device):
@@ -156,10 +262,15 @@ def make(config, device):
     zip_path = getattr(config, "zip_path", None)
     max_width = getattr(config, "max_width", IMG_WIDTH)
     dropout = getattr(config, "dropout", 0.2)
+    text_normalization = getattr(config, "text_normalization", "none")
+    image_preprocess = getattr(config, "image_preprocess", "none")
+    num_workers = getattr(config, "num_workers", 2)
 
     train_loader, val_loader, test_loader = make_loaders(
         config.train_gt, config.val_gt, config.test_gt, config.img_dir,
-        config.batch_size, zip_path=zip_path, max_width=max_width
+        config.batch_size, zip_path=zip_path, max_width=max_width,
+        text_normalization=text_normalization, image_preprocess=image_preprocess,
+        num_workers=num_workers
     )
     
     model = CRNN(NUM_CLASSES, IMG_HEIGHT, IMG_WIDTH,

@@ -49,7 +49,7 @@ def decode_prediction(pred_indices, sample_idx):
     return pred_seq, indices_to_text(pred_seq)
 
 def levenshtein_distance(a, b):
-    if Levenshtein is not None:
+    if Levenshtein is not None and isinstance(a, str) and isinstance(b, str):
         return Levenshtein.distance(a, b)
 
     previous = list(range(len(b) + 1))
@@ -96,8 +96,10 @@ def validate(model, loader, criterion, device, epoch=None, max_batches=None, pre
     total_batches = 0
     total_edit_distance = 0
     total_target_chars = 0
-    correct_words = 0
-    total_words = 0
+    correct_lines = 0
+    total_lines = 0
+    total_word_edit_distance = 0
+    total_target_words = 0
     prediction_examples = []
     with torch.no_grad():
         for i, (images, labels, label_lengths) in enumerate(loader):
@@ -128,8 +130,10 @@ def validate(model, loader, criterion, device, epoch=None, max_batches=None, pre
                 real_batch.append(real_text)
                 total_edit_distance += levenshtein_distance(pred_text, real_text)
                 total_target_chars += len(real_text)
-                correct_words += int(pred_text == real_text)
-                total_words += 1
+                correct_lines += int(pred_text == real_text)
+                total_lines += 1
+                total_word_edit_distance += levenshtein_distance(pred_text.split(), real_text.split())
+                total_target_words += len(real_text.split())
 
             if epoch is not None and i < 3 and batch_size > 0:
                 pred_seq, _ = decode_prediction(pred_indices, 0)
@@ -160,9 +164,9 @@ def validate(model, loader, criterion, device, epoch=None, max_batches=None, pre
 
     val_loss = total_loss / max(total_batches, 1)
     val_cer = total_edit_distance / max(total_target_chars, 1)
-    val_word_accuracy = correct_words / max(total_words, 1)
-    val_wer = 1.0 - val_word_accuracy
-    return val_loss, val_cer, val_word_accuracy, val_wer, prediction_examples
+    val_line_accuracy = correct_lines / max(total_lines, 1)
+    val_word_level_wer = total_word_edit_distance / max(total_target_words, 1)
+    return val_loss, val_cer, val_line_accuracy, val_word_level_wer, prediction_examples
 
 def train(config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -182,11 +186,12 @@ def train(config):
     prediction_samples = getattr(config, "prediction_samples", 8)
     checkpoint_path = getattr(config, "checkpoint_path", "best_model.pth")
     cer_checkpoint_path = getattr(config, "cer_checkpoint_path", "best_cer_model.pth")
+    dataset_name = getattr(config, "dataset", "dataset")
 
     best_val_loss = float('inf')
     best_val_cer = float('inf')
-    best_val_word_accuracy = 0.0
-    best_val_wer = float('inf')
+    best_val_line_accuracy = 0.0
+    best_val_word_level_wer = float('inf')
     patience_counter = 0
     patience = getattr(config, 'patience', 20)  # paciencia alta
 
@@ -204,7 +209,7 @@ def train(config):
                 model, train_loader, optimizer, criterion, device,
                 max_batches=max_train_batches,
             )
-            val_loss, val_cer, val_word_accuracy, val_wer, prediction_examples = validate(
+            val_loss, val_cer, val_line_accuracy, val_word_level_wer, prediction_examples = validate(
                 model, val_loader, criterion, device, epoch=epoch,
                 max_batches=max_val_batches,
                 prediction_samples=prediction_samples if wandb_mode != "disabled" else 0,
@@ -213,24 +218,24 @@ def train(config):
             print(
                 f"Epoch {epoch+1}: train_loss={train_loss:.4f}, "
                 f"val_loss={val_loss:.4f}, val_cer={val_cer:.4f}, "
-                f"val_word_accuracy={val_word_accuracy:.4f}, "
-                f"val_wer={val_wer:.4f}, lr={current_lr:.2e}"
+                f"val_exact_line_accuracy={val_line_accuracy:.4f}, "
+                f"val_word_level_wer={val_word_level_wer:.4f}, lr={current_lr:.2e}"
             )
 
-            best_val_word_accuracy = max(best_val_word_accuracy, val_word_accuracy)
-            best_val_wer = min(best_val_wer, val_wer)
+            best_val_line_accuracy = max(best_val_line_accuracy, val_line_accuracy)
+            best_val_word_level_wer = min(best_val_word_level_wer, val_word_level_wer)
             log_data = {
                 "epoch": epoch + 1,
                 "train_loss": train_loss,
                 "val_loss": val_loss,
                 "val_cer": val_cer,
-                "val_word_accuracy": val_word_accuracy,
-                "val_wer": val_wer,
+                "val_exact_line_accuracy": val_line_accuracy,
+                "val_word_level_wer": val_word_level_wer,
                 "learning_rate": current_lr,
                 "best_val_loss": min(best_val_loss, val_loss),
                 "best_val_cer": min(best_val_cer, val_cer),
-                "best_val_word_accuracy": max(best_val_word_accuracy, val_word_accuracy),
-                "best_val_wer": min(best_val_wer, val_wer),
+                "best_val_exact_line_accuracy": max(best_val_line_accuracy, val_line_accuracy),
+                "best_val_word_level_wer": min(best_val_word_level_wer, val_word_level_wer),
             }
             if wandb_mode != "disabled" and prediction_examples:
                 log_data["validation_predictions"] = make_prediction_table(prediction_examples)
@@ -245,7 +250,7 @@ def train(config):
                 print(f"  -> Mejor modelo por val_loss guardado (val_loss={val_loss:.4f})")
 
                 if wandb_mode != "disabled":
-                    save_wandb_artifact(run, "best_val_loss_model", "model", checkpoint_path)
+                    save_wandb_artifact(run, f"{dataset_name}_best_val_loss_model", "model", checkpoint_path)
             else:
                 patience_counter += 1
                 print(f"  -> Sin mejora por val_loss ({patience_counter}/{patience})")
@@ -256,7 +261,7 @@ def train(config):
                 print(f"  -> Mejor modelo por val_cer guardado (val_cer={val_cer:.4f})")
 
                 if wandb_mode != "disabled":
-                    save_wandb_artifact(run, "best_val_cer_model", "model", cer_checkpoint_path)
+                    save_wandb_artifact(run, f"{dataset_name}_best_val_cer_model", "model", cer_checkpoint_path)
             else:
                 print(f"  -> Sin mejora por val_cer")
 
@@ -268,9 +273,9 @@ def train(config):
         "Entrenamiento completado. "
         "Mejor pérdida de validación: {:.4f}. "
         "Mejor CER de validación: {:.4f}. "
-        "Mejor Word Accuracy de validación: {:.4f}. "
-        "Mejor WER de validación: {:.4f}".format(
-            best_val_loss, best_val_cer, best_val_word_accuracy, best_val_wer
+        "Mejor Exact Line Accuracy de validación: {:.4f}. "
+        "Mejor Word-level WER de validación: {:.4f}".format(
+            best_val_loss, best_val_cer, best_val_line_accuracy, best_val_word_level_wer
         )
     )
 

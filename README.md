@@ -17,6 +17,40 @@ To run the example code:
 python main.py
 ```
 
+## IAM y Esposalles
+
+El flujo de entrenamiento y test es el mismo para los dos datasets. Se elige con
+`--dataset`.
+
+Entrenar con IAM:
+```
+python main.py --mode train --dataset iam --wandb-mode online
+```
+
+Entrenar con Esposalles:
+```
+python main.py --mode train --dataset esposalles --wandb-mode online
+```
+
+Si se ejecuta en un entorno donde el `DataLoader` da problemas con procesos
+hijos, se puede desactivar el multiprocessing:
+```
+python main.py --mode train --dataset esposalles --num-workers 0 --wandb-mode online
+```
+
+Probar el mejor modelo de Esposalles:
+```
+python main.py --mode test --dataset esposalles --checkpoint-path best_esposalles_model.pth --test-samples 12
+```
+
+Por defecto, Esposalles usa:
+```
+splits/esposalles/train_gt_80.txt
+splits/esposalles/val_gt_10.txt
+splits/esposalles/test_gt_10.txt
+data/esposalles
+```
+
 
 
 ## Contributors
